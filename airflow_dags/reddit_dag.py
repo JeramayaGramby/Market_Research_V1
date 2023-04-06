@@ -5,3 +5,5 @@ from airflow.utils.dates import days_ago
 from datetime import datetime
 import sys
 import logging as log
+
+sys.path.insert(0, 'test_environment3/social_media')
