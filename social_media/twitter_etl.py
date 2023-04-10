@@ -8,7 +8,42 @@ import json
 from datetime import datetime
 import boto3
 from decouple import config
+from airflow import DAG
 
 TWITTER_ACCESS_TOKEN=config('TWITTER_ACCESS_TOKEN')
+TWITTER_CONSUMER_ACCESS_KEY=config('TWITTER_CONSUMER_ACCESS_KEY')
 
-auth = tweepy.OAuthHandler(access_token=TWITTER_ACCESS_TOKEN)
+@jit
+def twitter_data_extractor(latitude,longitude):
+    # Twitter Authentication
+    auth = tweepy.OAuthHandler(access_token=TWITTER_ACCESS_TOKEN)
+    auth.set_access_token()
+    api = tweepy.API(auth)
+
+
+    tweets = api.available_trends()
+    global_twitter_trends = api.reverse_geocode(latitude,longitude)
+
+    with open('api_responses/output.json', 'w') as api_output_file:
+            json.dump(global_twitter_trends,api_output_file,sort_keys=True)
+        
+        with open('api_responses/output.json', 'r', encoding='utf-8') as api_output_file:
+            imported_output_file = json.loads(api_output_file.read())
+    
+    # Create a list of geopy.Point points
+
+    # You can simplify the hell out of your code if you use inheritance
+    
+    # Iterate over all points in range of the numbers neede
+    # def geographic_point_fetcher(twitter_data_extractor)
+    #   for latitude in latitude_list: 
+    #       for longitude in longitude_list
+    #           yield twitter_data_extractor(latitude,longitude)
+    # 
+    # 
+    # 
+    # :
+
+
+    # Append the list of those numbers to an empty list
+    # The list never needs to change once it is created

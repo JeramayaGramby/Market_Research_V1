@@ -8,6 +8,9 @@ import sys
 from twitter_etl import twitter_data_extractor, twitter_data_validator
 from twitter_etl import twitter_data_loader
 
+# Any time a DAG runs, it needs a function to retry itself if it doesn't work
+# Or if it returns an exception that can't be handled
+
 sys.path.insert(0, 'test_environment3/social_media')
 
 with open() as DAG:
