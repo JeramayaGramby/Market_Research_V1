@@ -31,6 +31,19 @@ def twitter_data_extractor(latitude,longitude):
             imported_output_file = json.loads(api_output_file.read())
     
     # Create a list of geopy.Point points
-    # Iterate over all points in range of the numbers needed
+
+    # You can simplify the hell out of your code if you use inheritance
+    
+    # Iterate over all points in range of the numbers neede
+    # def geographic_point_fetcher(twitter_data_extractor)
+    #   for latitude in latitude_list: 
+    #       for longitude in longitude_list
+    #           yield twitter_data_extractor(latitude,longitude)
+    # 
+    # 
+    # 
+    # :
+
+
     # Append the list of those numbers to an empty list
     # The list never needs to change once it is created
